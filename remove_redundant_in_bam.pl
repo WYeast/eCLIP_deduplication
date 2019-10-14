@@ -23,14 +23,14 @@ close FASTQ;
 ## extract reads id, genomic coordination, barcode of each sequence from bam files
 my %id_hash;
 while(<BAM>){
-	chomp;
-	if(/^@/){
-		print OUT "$_\n";
+    chomp;
+    if(/^@/){
+        print OUT "$_\n";
 	}
 	else{
-		my @sp=split /\s+/;
-		my $new_id="$barcode_hash{$sp[0]}\s$sp[2]\s$sp[3]";
-		$id_hash{$new_id}=$_;
+	    my @sp=split /\s+/;
+	    my $new_id="$barcode_hash{$sp[0]}\s$sp[2]\s$sp[3]";
+	    $id_hash{$new_id}=$_;
 	}
 }
 close BAM;
